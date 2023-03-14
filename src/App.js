@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <button>Oceania</button>
+      <button>Oceania </button>
       <button>Smaller than Lithuania</button>
       <button id='srch'>Sort</button>
       <div className='main'>
