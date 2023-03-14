@@ -16,17 +16,34 @@ function App() {
     }
     fetchData();
   },[])
-
+  const filter_by_Oceania = () => {
+    const filtered = data.filter(function(ele){
+      return ele.region=="Oceania";
+  });
+    setData(filtered);
+  };
+  const filter_by_Lithuania = () => {
+    const filtered = data
+    .filter(function(ele){
+      return ele.area<=65300;
+  });
+    setData(filtered);
+    
+  };
+  const Sort_Data = () => {
+    const sorted = data.sort((a,b) => a.name < b.name?1:-1)
+    setData(sorted);
+  };
+  
   return (
     <div className="App">
       <Header/>
-      <button>Oceania </button>
-      <button>Smaller than Lithuania</button>
-      <button id='srch'>Sort</button>
+      <button onClick={filter_by_Oceania}>Oceania </button>
+      <button onClick={filter_by_Lithuania}>Smaller than Lithuania</button>
+      <button id='srch' onClick={Sort_Data}>Sort</button>
       <div className='main'>
         {
-          data
-          .sort((a,b) => a.name > b.name?1:-1)
+          data  
           .map((element, index) =>{
             return(
               <Elements 
