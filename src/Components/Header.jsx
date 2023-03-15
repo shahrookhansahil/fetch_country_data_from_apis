@@ -3,7 +3,7 @@ function Header() {
   return (
     <div>
         <header className="App-header">
-       <h1>REIZ TECH ASSIGNMENT</h1>
+       <h2>REIZ TECH ASSIGNMENT</h2>
       </header>      
     </div>
   )

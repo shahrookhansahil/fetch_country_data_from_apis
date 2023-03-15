@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 
 function App() {
   const [data ,setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, SetPostPerPage] = useState(4);
   useEffect(()=>{
     const fetchData = () =>{
       fetch('https://restcountries.com/v2/all?fields=name,region,area') //Fetching data from given Api
@@ -36,6 +38,24 @@ function App() {
     setData(sorted);
   };
   
+//Pagiantion code
+const lastPostIndex = currentPage*postPerPage;
+const firstPostIndex = lastPostIndex - postPerPage;
+const currentPost = data.slice(firstPostIndex, lastPostIndex);
+
+//Next Page Code:
+const NextPage = () => {
+  if(currentPage<(data.length/postPerPage)){
+    setCurrentPage(currentPage+1)
+  }
+  
+};
+const PrevPage = () => {
+  if(currentPage>1){
+    setCurrentPage(currentPage-1)
+  }
+ 
+};
   return (
     <div className="App">
       <Header/>
@@ -44,19 +64,25 @@ function App() {
       <button id='srch' onClick={Sort_Data}>Sort</button>
       <div className='main'>
         {
-          data  
+          currentPost  
           .map((element, index) =>{
             return(
-              <Elements 
-                key={index}
-                name = {element.name}
-                region = {element.region}
-                area = {element.area}
-                /> 
+              <>
+                <Elements 
+                  key={index}
+                  name = {element.name}
+                  region = {element.region}
+                  area = {element.area}
+                  />                
+              </>
             )
           })
         }
-        
+        <div id='pageBtn'>
+        <button onClick={PrevPage}>Prev</button>
+        <b>{currentPage}</b>
+        <button onClick={NextPage}>Next</button> 
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 .App {
-  margin: 20px;
+  margin: 10px;
 }
 
 .App-header {
@@ -9,11 +9,16 @@
 }
 
 button {
-  margin-right: 20px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
   background-color: rgb(126, 254, 126);
   border-color: rgb(126, 254, 126);
   border-radius: 5px;
 }
 #srch{
+  float: right;
+}
+#pageBtn{
   float: right;
 }
