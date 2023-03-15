@@ -31,7 +31,7 @@ function App() {
     
   };
   const Sort_Data = () => {
-    const sorted = data.sort((a,b) => a.name < b.name?1:-1)
+    const sorted = data.slice().reverse()
     setData(sorted);
   };
   
